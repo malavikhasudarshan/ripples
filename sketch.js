@@ -31,7 +31,7 @@ function draw() {
   drawWaterBackground();
 
   //camera feed (can be hidden by commenting out this line)
-  //image(video, 0, 0, width, height);
+  image(video, 0, 0, width, height);
 
   let currentTime = millis();
 
