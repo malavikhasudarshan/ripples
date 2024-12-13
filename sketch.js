@@ -27,13 +27,19 @@ function draw() {
   drawWaterBackground();
 
   //camera feed (can be hidden by commenting out this line)
-  image(video, 0, 0, width, height);
-
-  for (let ripple of ripples) {
-    ripple.display();
-  }
+  //image(video, 0, 0, width, height);
 
   let currentTime = millis();
+
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    ripples[i].update();
+    ripples[i].display();
+
+    //remove ripples older than 10 seconds
+    if (currentTime - ripples[i].startTime > 10000) {
+      ripples.splice(i, 1);
+    }
+  }
 
   if (currentTime - lastRippleTime >= 500) {
     for (let i = 0; i < poses.length; i++) {
@@ -41,7 +47,7 @@ function draw() {
 
       for (let keypoint of keypoints) {
         if (keypoint.confidence > 0.2) {
-          ripples.push(new Ripple(keypoint.x, keypoint.y));
+          ripples.push(new Ripple(keypoint.x, keypoint.y, currentTime));
         }
       }
     }
