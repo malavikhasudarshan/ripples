@@ -10,16 +10,17 @@ let colors = [
 ];
 
 class Ripple {
-  constructor(x, y) {
+  constructor(x, y, startTime) {
     this.x = x;
     this.y = y;
     this.color = random(colors);
     this.shape = this.generateBlob();
+    this.startTime = millis();;
   }
 
   generateBlob() {
     let points = [];
-    let numVertices = floor(random(8, 14)); ces
+    let numVertices = floor(random(8, 14));
     let radius = random(30, 60);
     for (let i = 0; i < numVertices; i++) {
       let angle = TWO_PI / numVertices * i + random(-PI / 10, PI / 10);

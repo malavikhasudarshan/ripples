@@ -20,7 +20,11 @@ function setup() {
 }
 
 function gotPoses(results) {
+  console.log("Poses detected:", results.length);
   poses = results;
+  console.log("Ripples count:", ripples.length);
+  console.log("Frame rate:", frameRate());
+
 }
 
 function draw() {
@@ -32,12 +36,10 @@ function draw() {
   let currentTime = millis();
 
   for (let i = ripples.length - 1; i >= 0; i--) {
-    ripples[i].update();
-    ripples[i].display();
-
-    //remove ripples older than 10 seconds
     if (currentTime - ripples[i].startTime > 10000) {
-      ripples.splice(i, 1);
+      ripples.splice(i, 1); //remove ripple if it's older than 10 seconds
+    } else {
+      ripples[i].display(); 
     }
   }
 
@@ -47,7 +49,7 @@ function draw() {
 
       for (let keypoint of keypoints) {
         if (keypoint.confidence > 0.2) {
-          ripples.push(new Ripple(keypoint.x, keypoint.y, currentTime));
+          ripples.push(new Ripple(keypoint.x, keypoint.y)); 
         }
       }
     }
@@ -69,6 +71,3 @@ function drawWaterBackground() {
     }
   }
 }
-
-
-
