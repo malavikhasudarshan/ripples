@@ -3,10 +3,10 @@
 A creative, interactive visual project using **ML5.js** and **p5.js** to simulate dynamic water ripples based on human motion detection. This program detects keypoints from a live camera feed, generates ripples where motion is detected, and overlays them on a flowing, water-like background with a pixelated, noise-driven effect.
 
 ## Features  
-- **Real-Time Pose Detection**: Utilizes the **ML5.js** `bodyPose` model to track body keypoints with confidence thresholds.  
+- **Real-Time Pose Detection**: Utilises the **ML5.js** `bodyPose` model to track body keypoints with confidence thresholds.  
 - **Dynamic Ripple Effects**: Ripples appear at detected keypoint positions and fade away after 10 seconds.  
 - **Flowing Water Background**: A noise-driven animation mimics the appearance of flowing water.  
-- **Sound Integration**: (Optional) Plink sounds or background water ambiance can be added for immersive interaction. (Personal To-Do)
+- **Sound Integration**: (Optional) Plink sounds or background water ambiance can be added for immersive interaction. [Personal To-Do lol]
 
 ## Technologies  
 - **ML5.js**: For real-time human pose detection using the `bodyPose` model.  
